@@ -9,5 +9,4 @@ public class GnStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GnStoreApplication.class, args);
 	}
-
 }
