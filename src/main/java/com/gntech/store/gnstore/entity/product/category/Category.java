@@ -26,8 +26,9 @@ public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category_product")
     @EqualsAndHashCode.Include
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 }

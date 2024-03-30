@@ -29,8 +29,9 @@ public class Brand implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
     @EqualsAndHashCode.Include
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 }

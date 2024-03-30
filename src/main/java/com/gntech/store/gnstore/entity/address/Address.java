@@ -1,8 +1,12 @@
 package com.gntech.store.gnstore.entity.address;
 
+import com.gntech.store.gnstore.entity.address.enm.AddressType;
 import com.gntech.store.gnstore.entity.person.Person;
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,4 +43,8 @@ public class Address {
     @ManyToOne(targetEntity = Person.class)
     @JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
     private Person person;
+
+    @Column(name = "address_type")
+    @Enumerated(EnumType.STRING)
+    private AddressType addressType;
 }

@@ -18,10 +18,10 @@ import java.util.Date;
 @Setter
 public class Physical extends Person implements Serializable {
 
-    @Column(nullable = false)
+    @Column(name = "cpf", nullable = false)
     private String cpf;
 
     @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
+    @Column(name = "date_birth", nullable = false)
     private Date dateBirth;
 }
