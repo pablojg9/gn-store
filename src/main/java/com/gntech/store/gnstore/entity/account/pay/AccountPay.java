@@ -19,6 +19,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,11 +34,13 @@ import java.util.Date;
 @SequenceGenerator(name = "seq_account_pay", sequenceName = "seq_account_pay", allocationSize = 1)
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class AccountPay {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_account_pay")
   @Column(name = "id")
+  @EqualsAndHashCode.Include
   private Long id;
 
   @Column(name = "description")
