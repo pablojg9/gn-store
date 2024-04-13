@@ -2,7 +2,7 @@ spring:
   application:
     name: gn-tech
   datasource:
-    username: postgres
+    username: admin
     password: admin
     url: jdbc:postgresql://localhost:5431/gn-tech-db
     driver-class-name: org.postgresql.Driver
