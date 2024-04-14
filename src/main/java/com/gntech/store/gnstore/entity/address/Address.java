@@ -2,6 +2,7 @@ package com.gntech.store.gnstore.entity.address;
 
 import com.gntech.store.gnstore.entity.address.enm.AddressType;
 import com.gntech.store.gnstore.entity.person.Person;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -28,23 +29,37 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Address {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String street;
-    private String cep;
-    private String number;
-    private String complement;
-    private String neighborhood;
-    private String uf;
-    private String city;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
+  @EqualsAndHashCode.Include
+  private Long id;
 
-    @ManyToOne(targetEntity = Person.class)
-    @JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
-    private Person person;
+  @Column(name = "street", nullable = false)
+  private String street;
 
-    @Column(name = "address_type")
-    @Enumerated(EnumType.STRING)
-    private AddressType addressType;
+  @Column(name = "cep", nullable = false)
+  private String cep;
+
+  @Column(name = "number", nullable = false)
+  private String number;
+
+  @Column(name = "complement")
+  private String complement;
+
+  @Column(name = "neighborhood", nullable = false)
+  private String neighborhood;
+
+  @Column(name = "uf", nullable = false)
+  private String uf;
+
+  @Column(name = "city", nullable = false)
+  private String city;
+
+  @ManyToOne(targetEntity = Person.class)
+  @JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
+  private Person person;
+
+  @Column(name = "address_type", nullable = false)
+  @Enumerated(EnumType.STRING)
+  private AddressType addressType;
 }

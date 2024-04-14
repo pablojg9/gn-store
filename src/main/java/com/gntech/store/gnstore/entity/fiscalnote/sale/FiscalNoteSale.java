@@ -1,6 +1,7 @@
 package com.gntech.store.gnstore.entity.fiscalnote.sale;
 
 import com.gntech.store.gnstore.entity.store.sale.buy.StoreSaleBuy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,19 +37,19 @@ public class FiscalNoteSale implements Serializable {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "number")
+  @Column(name = "number", nullable = false)
   private String number;
 
-  @Column(name = "series")
+  @Column(name = "series", nullable = false)
   private String series;
 
-  @Column(name = "type")
+  @Column(name = "type", nullable = false)
   private String type;
 
-  @Column(name = "xml", columnDefinition = "TEXT")
+  @Column(name = "xml", columnDefinition = "TEXT", nullable = false)
   private String xml;
 
-  @Column(name = "pdf", columnDefinition = "TEXT")
+  @Column(name = "pdf", columnDefinition = "TEXT", nullable = false)
   private String pdf;
 
   @OneToOne

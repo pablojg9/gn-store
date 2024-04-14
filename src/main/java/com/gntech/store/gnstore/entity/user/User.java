@@ -1,7 +1,9 @@
 package com.gntech.store.gnstore.entity.user;
 
 
+import com.gntech.store.gnstore.entity.person.Person;
 import com.gntech.store.gnstore.entity.role.Role;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -12,13 +14,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,15 +49,19 @@ public class User implements UserDetails {
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "login")
+  @Column(name = "login", nullable = false)
   private String login;
 
-  @Column(name = "password")
+  @Column(name = "password", nullable = false)
   private String password;
 
   @Temporal(TemporalType.DATE)
-  @Column(name = "password_current_date")
+  @Column(name = "password_current_date", nullable = false)
   private Date passwordCurrentdate;
+
+  @ManyToOne(targetEntity = Person.class)
+  @JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(name = "person_fk", value = ConstraintMode.CONSTRAINT))
+  private Person person;
 
   @OneToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "role_id"}, name = "unique_role_user"),

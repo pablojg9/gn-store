@@ -38,10 +38,10 @@ public class Image implements Serializable {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "image_original", columnDefinition = "TEXT")
+  @Column(name = "image_original", columnDefinition = "TEXT", nullable = false)
   private String imageOriginal;
 
-  @Column(name = "image_thumbnail", columnDefinition = "TEXT")
+  @Column(name = "image_thumbnail", columnDefinition = "TEXT", nullable = false)
   private String imageThumbnail;
 
   @ManyToOne(targetEntity = Product.class)

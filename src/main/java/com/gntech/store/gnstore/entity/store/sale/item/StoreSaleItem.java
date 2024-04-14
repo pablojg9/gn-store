@@ -1,8 +1,8 @@
 package com.gntech.store.gnstore.entity.store.sale.item;
 
-import com.gntech.store.gnstore.entity.person.Person;
 import com.gntech.store.gnstore.entity.product.Product;
 import com.gntech.store.gnstore.entity.store.sale.buy.StoreSaleBuy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -38,6 +39,7 @@ public class StoreSaleItem implements Serializable {
   @Column(name = "id")
   private Long id;
 
+  @Column(name = "quantity", nullable = false)
   private Double quantity;
 
   @ManyToOne

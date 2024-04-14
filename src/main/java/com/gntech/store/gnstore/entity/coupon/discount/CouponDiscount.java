@@ -36,7 +36,7 @@ public class CouponDiscount implements Serializable {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "coupon_code")
+  @Column(name = "coupon_code", nullable = false)
   private String couponCode;
 
   @Column(name = "value_discount")
@@ -45,7 +45,7 @@ public class CouponDiscount implements Serializable {
   @Column(name = "value_discount_percentage")
   private BigDecimal valueDiscountPercentage;
 
-  @Column(name = "date_expired_coupon")
+  @Column(name = "date_expired_coupon", nullable = false)
   @Temporal(TemporalType.DATE)
   private Date dateExpiredCoupon;
 }

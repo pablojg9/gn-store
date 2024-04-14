@@ -5,6 +5,7 @@ import com.gntech.store.gnstore.entity.coupon.discount.CouponDiscount;
 import com.gntech.store.gnstore.entity.fiscalnote.sale.FiscalNoteSale;
 import com.gntech.store.gnstore.entity.payment.method.PaymentMethod;
 import com.gntech.store.gnstore.entity.person.Person;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -19,6 +20,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,23 +47,23 @@ public class StoreSaleBuy {
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "amount")
+  @Column(name = "amount", nullable = false)
   private BigDecimal amount;
 
   @Column(name = "discount_value")
   private BigDecimal discountValue;
 
-  @Column(name = "shipping_value")
+  @Column(name = "shipping_value", nullable = false)
   private BigDecimal shippingValue;
 
-  @Column(name = "delivery_day")
+  @Column(name = "delivery_day", nullable = false)
   private Integer deliveryDay;
 
-  @Column(name = "sale_date")
+  @Column(name = "sale_date", nullable = false)
   @Temporal(TemporalType.DATE)
   private Date saleDate;
 
-  @Column(name = "delivery_date")
+  @Column(name = "delivery_date", nullable = false)
   @Temporal(TemporalType.DATE)
   private Date deliveryDate;
 
@@ -87,6 +89,6 @@ public class StoreSaleBuy {
   private FiscalNoteSale fiscalNoteSale;
 
   @ManyToOne
-  @JoinColumn(name = "coupon_discount_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "coupon_discount_fk"))
+  @JoinColumn(name = "coupon_discount_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "coupon_discount_fk"))
   private CouponDiscount couponDiscount;
 }

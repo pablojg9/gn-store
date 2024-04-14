@@ -1,6 +1,7 @@
 package com.gntech.store.gnstore.entity.person;
 
 import com.gntech.store.gnstore.entity.address.Address;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,21 +30,21 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class Person implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
-    @EqualsAndHashCode.Include
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
+  @EqualsAndHashCode.Include
+  @Column(name = "id")
+  private Long id;
 
-    @Column(name = "name")
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    @Column(name = "email")
-    private String email;
+  @Column(name = "email", nullable = false)
+  private String email;
 
-    @Column(name = "phone")
-    private String phone;
+  @Column(name = "phone", nullable = false)
+  private String phone;
 
-    @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Address> addressList = new ArrayList<>();
+  @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Address> addressList = new ArrayList<>();
 }

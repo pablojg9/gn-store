@@ -26,12 +26,12 @@ import java.io.Serializable;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Brand implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
-    @EqualsAndHashCode.Include
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
+  @EqualsAndHashCode.Include
+  @Column(name = "id")
+  private Long id;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+  @Column(name = "description", nullable = false)
+  private String description;
 }

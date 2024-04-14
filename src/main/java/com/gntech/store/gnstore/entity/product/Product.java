@@ -33,36 +33,36 @@ public class Product implements Serializable {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "unit_type")
+  @Column(name = "unit_type", nullable = false)
   private String unitType;
 
-  @Column(name = "name")
+  @Column(name = "name", nullable = false)
   private String name;
 
-  @Column(name = "description", columnDefinition = "TEXT", length = 2000)
+  @Column(name = "description", columnDefinition = "TEXT", length = 2000, nullable = false)
   private String description;
 
-  @Column(name = "active")
+  @Column(name = "active", nullable = false)
   private Boolean active = Boolean.TRUE;
 
   // todo - item nota produto criar
 
-  @Column(name = "weight")
+  @Column(name = "weight", nullable = false)
   private Double weight;
 
-  @Column(name = "width")
+  @Column(name = "width", nullable = false)
   private Double width;
 
-  @Column(name = "height")
+  @Column(name = "height", nullable = false)
   private Double height;
 
-  @Column(name = "depth")
+  @Column(name = "depth", nullable = false)
   private Double depth;
 
-  @Column(name = "sale_value")
+  @Column(name = "sale_value", nullable = false)
   private BigDecimal saleValue;
 
-  @Column(name = "quantity_stock")
+  @Column(name = "quantity_stock", nullable = false)
   private Integer quantityStock;
 
   @Column(name = "quantity_alert_stock")

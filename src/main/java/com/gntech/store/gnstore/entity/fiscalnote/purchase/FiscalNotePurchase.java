@@ -2,6 +2,7 @@ package com.gntech.store.gnstore.entity.fiscalnote.purchase;
 
 import com.gntech.store.gnstore.entity.account.pay.AccountPay;
 import com.gntech.store.gnstore.entity.person.Person;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -15,6 +16,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,7 +36,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class FiscalNotePurchase  implements Serializable {
+public class FiscalNotePurchase implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_fiscal_note_purchase")
@@ -42,25 +44,25 @@ public class FiscalNotePurchase  implements Serializable {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "number_note")
+  @Column(name = "number_note", nullable = false)
   private String numberNote;
 
-  @Column(name = "note_series")
+  @Column(name = "note_series", nullable = false)
   private String noteSeries;
 
   @Column(name = "description_observation")
   private String descriptionObservation;
 
-  @Column(name = "value_total")
+  @Column(name = "value_total", nullable = false)
   private BigDecimal valueTotal;
 
   @Column(name = "value_discount")
   private BigDecimal valueDiscount;
 
-  @Column(name = "icms")
+  @Column(name = "icms", nullable = false)
   private BigDecimal icms;
 
-  @Column(name = "purchase_date")
+  @Column(name = "purchase_date", nullable = false)
   @Temporal(TemporalType.DATE)
   private Date purchaseDate;
 

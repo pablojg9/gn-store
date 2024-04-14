@@ -32,7 +32,6 @@ public class PaymentMethod implements Serializable {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "description")
+  @Column(name = "description", nullable = false)
   private String description;
-
 }

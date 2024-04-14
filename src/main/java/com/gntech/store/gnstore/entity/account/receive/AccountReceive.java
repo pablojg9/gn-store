@@ -45,14 +45,14 @@ public class AccountReceive {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "description")
+  @Column(name = "description", nullable = false)
   private String description;
 
-  @Column(name = "status")
+  @Column(name = "status", nullable = false)
   @Enumerated(EnumType.STRING)
   private AccountReceiveStatus status;
 
-  @Column(name = "expired_date")
+  @Column(name = "expired_date", nullable = false)
   @Temporal(TemporalType.DATE)
   private Date expiredDate;
 
@@ -60,7 +60,7 @@ public class AccountReceive {
   @Temporal(TemporalType.DATE)
   private Date payedDate;
 
-  @Column(name = "total_value")
+  @Column(name = "total_value", nullable = false)
   private BigDecimal totalValue;
 
   @Column(name = "discount_value")

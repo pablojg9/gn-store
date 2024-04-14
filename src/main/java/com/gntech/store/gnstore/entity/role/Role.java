@@ -22,17 +22,17 @@ import org.springframework.security.core.GrantedAuthority;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Role implements GrantedAuthority {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_role")
-    @EqualsAndHashCode.Include
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_role")
+  @EqualsAndHashCode.Include
+  @Column(name = "id")
+  private Long id;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+  @Column(name = "description", nullable = false)
+  private String description;
 
-    @Override
-    public String getAuthority() {
-        return this.description;
-    }
+  @Override
+  public String getAuthority() {
+    return this.description;
+  }
 }

@@ -1,8 +1,8 @@
 package com.gntech.store.gnstore.entity.account.pay;
 
 import com.gntech.store.gnstore.entity.account.pay.enm.AccountPayStatus;
-import com.gntech.store.gnstore.entity.account.receive.enm.AccountReceiveStatus;
 import com.gntech.store.gnstore.entity.person.Person;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -18,6 +18,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,14 +44,14 @@ public class AccountPay {
   @EqualsAndHashCode.Include
   private Long id;
 
-  @Column(name = "description")
+  @Column(name = "description", nullable = false)
   private String description;
 
-  @Column(name = "status")
+  @Column(name = "status", nullable = false)
   @Enumerated(EnumType.STRING)
   private AccountPayStatus status;
 
-  @Column(name = "expired_date")
+  @Column(name = "expired_date", nullable = false)
   @Temporal(TemporalType.DATE)
   private Date expiredDate;
 
@@ -58,7 +59,7 @@ public class AccountPay {
   @Temporal(TemporalType.DATE)
   private Date payedDate;
 
-  @Column(name = "total_value")
+  @Column(name = "total_value", nullable = false)
   private BigDecimal totalValue;
 
   @Column(name = "discount_value")
@@ -71,5 +72,4 @@ public class AccountPay {
   @ManyToOne(targetEntity = Person.class)
   @JoinColumn(name = "person_supplier_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_supplier_id"))
   private Person person_supplier;
-
 }
