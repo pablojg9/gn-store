@@ -1,4 +1,4 @@
-package com.gntech.store.gnstore.entity.sale.buy.store;
+package com.gntech.store.gnstore.entity.store.sale.buy;
 
 import com.gntech.store.gnstore.entity.address.Address;
 import com.gntech.store.gnstore.entity.coupon.discount.CouponDiscount;
@@ -25,22 +25,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
 @Entity
-@Table(name = "sale_buy_store")
+@Table(name = "store_sale_buy")
 @Getter
 @Setter
-@SequenceGenerator(name = "seq_sale_buy_store", sequenceName = "seq_sale_buy_store", allocationSize = 1)
+@SequenceGenerator(name = "seq_store_sale_buy", sequenceName = "seq_store_sale_buy", allocationSize = 1)
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class SaleBuyStore implements Serializable {
+public class StoreSaleBuy {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_sale_buy_store")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_store_sale_buy")
   @EqualsAndHashCode.Include
   @Column(name = "id")
   private Long id;

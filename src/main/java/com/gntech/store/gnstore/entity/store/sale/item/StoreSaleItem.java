@@ -1,5 +1,7 @@
-package com.gntech.store.gnstore.entity.fiscalnote.sale;
+package com.gntech.store.gnstore.entity.store.sale.item;
 
+import com.gntech.store.gnstore.entity.person.Person;
+import com.gntech.store.gnstore.entity.product.Product;
 import com.gntech.store.gnstore.entity.store.sale.buy.StoreSaleBuy;
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
@@ -9,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,36 +23,29 @@ import lombok.Setter;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "fiscal_note_sale")
+@Table(name = "store_sale_item")
 @Getter
 @Setter
-@SequenceGenerator(name = "seq_fiscal_note_sale", sequenceName = "seq_fiscal_note_sale", allocationSize = 1)
+@SequenceGenerator(name = "seq_store_sale_item", sequenceName = "seq_store_sale_item", allocationSize = 1)
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class FiscalNoteSale implements Serializable {
+public class StoreSaleItem implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_fiscal_note_sale")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_store_sale_item")
   @EqualsAndHashCode.Include
+  @Column(name = "id")
   private Long id;
 
-  @Column(name = "number")
-  private String number;
+  private Double quantity;
 
-  @Column(name = "series")
-  private String series;
+  @ManyToOne
+  @JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "product_fk"))
+  private Product product;
 
-  @Column(name = "type")
-  private String type;
-
-  @Column(name = "xml", columnDefinition = "TEXT")
-  private String xml;
-
-  @Column(name = "pdf", columnDefinition = "TEXT")
-  private String pdf;
-
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "store_sale_buy_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "store_sale_buy_fk"))
   private StoreSaleBuy storeSaleBuy;
+
 }

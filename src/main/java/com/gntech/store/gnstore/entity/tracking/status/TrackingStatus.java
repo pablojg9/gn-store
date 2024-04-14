@@ -1,6 +1,7 @@
 package com.gntech.store.gnstore.entity.tracking.status;
 
-import com.gntech.store.gnstore.entity.sale.buy.store.SaleBuyStore;
+import com.gntech.store.gnstore.entity.store.sale.buy.StoreSaleBuy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -10,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -51,6 +51,6 @@ public class TrackingStatus implements Serializable {
   private String status;
 
   @ManyToOne
-  @JoinColumn(name = "sale_buy_store_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "sale_buy_store_fk"))
-  private SaleBuyStore saleBuyStore;
+  @JoinColumn(name = "store_sale_buy_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "store_sale_buy_fk"))
+  private StoreSaleBuy storeSaleBuy;
 }
